@@ -1,1 +1,109 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del cuerpo */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+  width: 600px;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones */
+button {
+  font-size: 16px;
+  font-weight: bold;
+  background: #8edb46;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0.2, 0.5);
+}
+
+button:hover {
+  background: #78c035;
+}
+
+label{
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  margin-top: 5px;
+}
+
+/* Estilo uniforme para todos los inputs */
+input {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 100%; /* Evita que sobrepase el contenedor */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Asegura que padding y border no afecten el ancho */
+}
+
+/* Efecto cuando el input está enfocado */
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Ajustar el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+p.error-message {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 20px; /* Espacio reservado */
+  display: block; /* Mantiene el espacio incluso si está vacío */
+  margin-top: 5px;
+}
+
+h2 {
+  text-align: center; /* Centrado */
+  font-size: 30px;
+  font-weight: bold;
+  color: #8edb46 ;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 8px;
+
+}
+
+/* 📏 Línea decorativa debajo del h2 */
+h2::after {
+  content: "";
+  width: 90px;
+  height: 5px;
+  background: linear-gradient(90deg, #8edb46, #58b42d);
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}

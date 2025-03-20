@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Registro de Usuarios</h2>
+
+  <form [formGroup]="usuarioForm" (ngSubmit)="enviarFormulario()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre" required />
+
+    <label>Apellidos:</label>
+    <input type="text" formControlName="apellidos" required />
+
+    <label>DNI:</label>
+    <input type="text" formControlName="dni" required />
+
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+
+    <label>Fecha de Nacimiento:</label>
+    <input type="date" formControlName="fecha_nac" required />
+    <br>
+    <p class="error-message" *ngIf="errores">{{ errores }}</p>
+
+    <button type="submit" [disabled]="usuarioForm.invalid">Registrar</button>
+  </form>
+</div>
+

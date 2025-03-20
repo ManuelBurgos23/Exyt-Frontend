@@ -1,9 +1,21 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, Routes } from '@angular/router';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
+import { RegistrarUsuariosComponent } from './components/registrar-usuarios/registrar-usuarios.component';
 
-import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+const routes: Routes = [
+  { path: 'usuarios', component: ListarUsuariosComponent },
+  { path: 'registrar', component: RegistrarUsuariosComponent },
+  { path: '', redirectTo: 'usuarios', pathMatch: 'full' }
+];
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes),
+    RegistrarUsuariosComponent,
+    ListarUsuariosComponent,
+    provideHttpClient(withFetch()),
+  ],
 };

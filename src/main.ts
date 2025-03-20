@@ -1,6 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { RegistrarUsuariosComponent } from './app/components/registrar-usuarios/registrar-usuarios.component';
+import { ListarUsuariosComponent } from './app/components/listar-usuarios/listar-usuarios.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(RegistrarUsuariosComponent, {
+  providers: [
+    provideHttpClient(),
+    provideRouter([
+      { path: 'listar', component: ListarUsuariosComponent },
+      { path: 'registrar', component: RegistrarUsuariosComponent },
+      { path: '', redirectTo: '/listar', pathMatch: 'full' }
+    ])
+  ]
+});
