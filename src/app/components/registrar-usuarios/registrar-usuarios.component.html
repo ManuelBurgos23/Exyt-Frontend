@@ -2,24 +2,83 @@
   <h2>Registro de Usuarios</h2>
 
   <form [formGroup]="usuarioForm" (ngSubmit)="enviarFormulario()">
-    <label>Nombre:</label>
-    <input type="text" formControlName="nombre" required />
+    <div class="form-group">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        formControlName="nombre"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched}"
+      />
+      <div *ngIf="usuarioForm.get('nombre')?.hasError('required') && usuarioForm.get('nombre')?.touched" class="invalid-feedback">
+        El nombre es obligatorio.
+      </div>
+    </div>
 
-    <label>Apellidos:</label>
-    <input type="text" formControlName="apellidos" required />
+    <div class="form-group">
+      <label>Apellidos:</label>
+      <input
+        type="text"
+        formControlName="apellidos"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': usuarioForm.get('apellidos')?.invalid && usuarioForm.get('apellidos')?.touched}"
+      />
+      <div *ngIf="usuarioForm.get('apellidos')?.hasError('required') && usuarioForm.get('apellidos')?.touched" class="invalid-feedback">
+        Los apellidos son obligatorios.
+      </div>
+    </div>
 
-    <label>DNI:</label>
-    <input type="text" formControlName="dni" required />
+    <div class="form-group">
+      <label>DNI / NIE / Pasaporte:</label>
+      <input
+        type="text"
+        formControlName="dni"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': usuarioForm.get('dni')?.invalid && usuarioForm.get('dni')?.touched}"
+      />
+      <div *ngIf="usuarioForm.get('dni')?.hasError('required') && usuarioForm.get('dni')?.touched" class="invalid-feedback">
+        DNI, NIE, Pasaporte obligatorio.
+      </div>
+    </div>
 
-    <label>Email:</label>
-    <input type="email" formControlName="email" required />
+    <div class="form-group">
+      <label>Email:</label>
+      <input
+        type="email"
+        formControlName="email"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched}"
+      />
+      <div *ngIf="usuarioForm.get('email')?.hasError('required') && usuarioForm.get('email')?.touched" class="invalid-feedback">
+        El email es obligatorio.
+      </div>
+      <div *ngIf="usuarioForm.get('email')?.hasError('email') && usuarioForm.get('email')?.touched" class="invalid-feedback">
+        El email no es válido.
+      </div>
+    </div>
 
-    <label>Fecha de Nacimiento:</label>
-    <input type="date" formControlName="fecha_nac" required />
-    <br>
-    <p class="error-message" *ngIf="errores">{{ errores }}</p>
+    <div class="form-group">
+      <label>Fecha de Nacimiento:</label>
+      <input
+        type="date"
+        formControlName="fecha_nac"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': usuarioForm.get('fecha_nac')?.invalid && usuarioForm.get('fecha_nac')?.touched}"
+      />
+      <div *ngIf="usuarioForm.get('fecha_nac')?.hasError('required') && usuarioForm.get('fecha_nac')?.touched" class="invalid-feedback">
+        La fecha de nacimiento es obligatoria.
+      </div>
+    </div>
 
-    <button type="submit" [disabled]="usuarioForm.invalid">Registrar</button>
+    <p *ngIf="errores" class="error-message" style="color: red; font-weight: bold;">
+      {{ errores }}
+    </p>
+
+    <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Registrar</button>
   </form>
 </div>
-

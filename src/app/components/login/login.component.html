@@ -1,0 +1,29 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <div *ngIf="isLoading">Cargando...</div>
+
+  <form *ngIf="!isLoading" [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" required placeholder="Email" />
+      <p style="color: red;" class="error" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        <span *ngIf="loginForm.controls['email'].errors?.['required']">El email es obligatorio.</span>
+        <span *ngIf="loginForm.controls['email'].errors?.['email']">El formato del email es inválido.</span>
+      </p>
+    </div>
+
+    <div>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" formControlName="password" required placeholder="Contraseña" />
+      <p style="color: red;" class="error" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        <span *ngIf="loginForm.controls['password'].errors?.['required']">La contraseña es obligatoria.</span>
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+  </form>
+  <br>
+  <p style="color: red;" *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>

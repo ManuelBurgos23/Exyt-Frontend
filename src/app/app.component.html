@@ -1,2 +1,7 @@
-
+<nav *ngIf="mostrarLeyenda$ | async">
+  <a routerLinkActive="active" routerLink="/usuarios">Listado</a>
+  <a routerLinkActive="active" routerLink="/registrar">Registro</a>
+  <a routerLinkActive="active" routerLink="/lector-qr">Lector QR</a>
+</nav>
+<br>
 <router-outlet></router-outlet>

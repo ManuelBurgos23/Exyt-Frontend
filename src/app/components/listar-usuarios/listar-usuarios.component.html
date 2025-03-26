@@ -1,8 +1,10 @@
-
-
 <div class="container">
   <h2 class="text-center">Lista de Usuarios</h2>
-  <p *ngIf="mensajeError" class="error-message">{{ mensajeError }}</p>
+
+  <p *ngIf="mensajeError" class="error-message" style="color: red; font-weight: bold;">
+    {{ mensajeError }}
+  </p>
+
   <div class="table-container">
     <table *ngIf="usuarios && usuarios.length > 0; else sinUsuarios" class="table">
       <thead>
@@ -29,6 +31,4 @@
   <ng-template #sinUsuarios>
     <p>No hay usuarios registrados.</p>
   </ng-template>
-  <br>
-
 </div>

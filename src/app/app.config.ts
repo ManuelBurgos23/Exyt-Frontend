@@ -1,21 +1,17 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, Routes } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
-import { RegistrarUsuariosComponent } from './components/registrar-usuarios/registrar-usuarios.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { routes } from '../app/app.routes';
 
-const routes: Routes = [
-  { path: 'usuarios', component: ListarUsuariosComponent },
-  { path: 'registrar', component: RegistrarUsuariosComponent },
-  { path: '', redirectTo: 'usuarios', pathMatch: 'full' }
-];
-
+// Configuración de la aplicación
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
-    provideRouter(routes),
-    RegistrarUsuariosComponent,
-    ListarUsuariosComponent,
     provideHttpClient(withFetch()),
+    provideRouter(routes, withComponentInputBinding()),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
   ],
 };
