@@ -23,6 +23,13 @@
     </div>
 
     <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+    <br>
+    <div class="container-btn">
+      <button class="btn-google" (click)="loginWithGoogle()">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+        <label for="">Iniciar sesión con Google</label>
+      </button>
+    </div>
   </form>
   <br>
   <p style="color: red;" *ngIf="errorMessage" class="error">{{ errorMessage }}</p>

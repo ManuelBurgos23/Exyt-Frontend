@@ -8,6 +8,7 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebas
 import { SharedService } from '../../services/shared.service';
 import { espaciosEnBlanco } from '../../validators/espaciosEnBlanco.validator';
 import { NgZone } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 initializeApp(environment.firebaseConfig);
 
@@ -28,18 +29,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private sharedService: SharedService,
     private ngZone: NgZone,
-
+    private authService: AuthService
 
   ) {
+    this.sharedService.setMostrarLeyenda(false);
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, espaciosEnBlanco()]],
       password: ['', [Validators.required, espaciosEnBlanco()]],
     });
   }
 
-  ngOnInit() {
-    this.sharedService.setMostrarLeyenda(false);
 
+
+  ngOnInit() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       this.ngZone.run(() => {
@@ -78,4 +80,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       });
   }
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle()
+      .then(() => console.log('Inicio de sesión con Google exitoso'))
+      .catch(err => console.error('Error en Google Sign-In:', err));
+  }
+
 }

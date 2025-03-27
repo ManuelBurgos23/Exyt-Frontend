@@ -8,10 +8,10 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Definir rutas de la aplicación
 export const routes: Routes = [
-  { path: 'usuarios', component: ListarUsuariosComponent, data: { mostrarLeyenda: true }, canActivate: [AuthGuard] },
-  { path: 'registrar', component: RegistrarUsuariosComponent, data: { mostrarLeyenda: true } , canActivate: [AuthGuard]},
-  { path: 'lector-qr', component: LectorQrComponent, data: { mostrarLeyenda: true }, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent, data: { mostrarLeyenda: false } },
+  { path: 'usuarios', component: ListarUsuariosComponent, canActivate: [AuthGuard] },
+  { path: 'registrar', component: RegistrarUsuariosComponent, canActivate: [AuthGuard]},
+  { path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent,  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
